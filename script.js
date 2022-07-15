@@ -1,4 +1,5 @@
 const container = document.querySelector(".container");
+const btn = document.querySelector(".btn");
 
 let squareDiv = document.createElement("div");
 squareDiv.classList.add("square");
@@ -15,12 +16,20 @@ container.addEventListener("mousedown", (e) => {
 container.addEventListener("mousemove", (e) => {
   if (clicked == true) {
     e.target.style.backgroundColor = "black";
-  } else {
-    return;
   }
 });
 container.addEventListener("mouseup", (e) => {
   if (clicked == true) {
     clicked = false;
+  }
+});
+
+let gridSize = 0;
+btn.addEventListener("click", () => {
+  let answer = parseInt(prompt("how many squares per side?", ""));
+  if (!Number.isInteger(answer)) {
+    alert("not a number");
+  } else {
+    gridSize = answer;
   }
 });
