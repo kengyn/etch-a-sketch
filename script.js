@@ -1,20 +1,24 @@
+//DOM
 const container = document.querySelector(".container");
 const btn = document.querySelector(".btn");
 const clear = document.querySelector(".clearbtn");
 
-let squareDiv = document.createElement("div");
-squareDiv.classList.add("square");
-
+//create grid
 function createGrid(userInput = 16) {
+  //grid dimensions
   container.style.gridTemplateColumns = `repeat(${userInput}, 1fr)`;
   container.style.gridTemplateRows = `repeat(${userInput}, 1fr)`;
+  //generates squares in grid
   for (i = 0; i < userInput * userInput; i++) {
-    container.appendChild(squareDiv.cloneNode());
+    let squareDiv = document.createElement("div");
+    squareDiv.classList.add("square");
+    container.appendChild(squareDiv);
   }
 }
-
+//initial grid
 createGrid();
 
+//click and drag to draw
 let clicked = false;
 container.addEventListener("mousedown", (e) => {
   clicked = true;
@@ -31,6 +35,7 @@ container.addEventListener("mouseup", (e) => {
   }
 });
 
+//button to change grid dimensions
 btn.addEventListener("click", () => {
   let gridSize = parseInt(prompt("how many squares per side?", ""));
   if (!Number.isInteger(gridSize)) {
@@ -43,6 +48,7 @@ btn.addEventListener("click", () => {
   }
 });
 
+//clear button
 clear.addEventListener("click", () => {
   container.textContent = "";
   createGrid();
