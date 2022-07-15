@@ -1,0 +1,12 @@
+.container {
+  width: 950px;
+  height: 950px;
+  /* border: solid black; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.square {
+  border: solid black;
+}
